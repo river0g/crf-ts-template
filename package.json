@@ -2,11 +2,14 @@
   "name": "crf-ts-template",
   "version": "1.0.0",
   "description": "Cloud Run Functions TypeScript Template",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "config": {
+    "functionsName": "my-function-name"
+  },
   "scripts": {
     "build": "tsc",
-    "dev": "tsx watch --clear-screen=false node_modules/@google-cloud/functions-framework/build/src/main.js --target=helloWorld --source=src/index.ts",
-    "deploy": "npm run build && gcloud functions deploy my-function-name --gen2 --runtime=nodejs24 --region=asia-northeast1 --source=. --entry-point=streamHello --trigger-http --allow-unauthenticated",
+    "dev": "tsx watch --clear-screen=false node_modules/@google-cloud/functions-framework/build/src/main.js --target=entryPoint --source=src/index.ts",
+    "deploy": "npm run build && gcloud functions deploy ${npm_package_config_functionsName} --gen2 --runtime=nodejs24 --region=asia-northeast1 --source=. --entry-point=entryPoint --trigger-http --allow-unauthenticated",
     "lint": "biome check src",
     "fix": "biome check --write src",
     "prepare": "husky"

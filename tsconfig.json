@@ -4,6 +4,8 @@
     "target": "esnext",
     "types": ["node"],
 
+    "outDir": "dist",
+
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
